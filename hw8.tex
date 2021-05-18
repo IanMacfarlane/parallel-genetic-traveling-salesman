@@ -1,0 +1,39 @@
+\documentclass{article}
+
+\oddsidemargin0cm
+\topmargin-2cm
+\textwidth16.5cm
+\textheight23.5cm
+
+\usepackage{listings}
+\usepackage{graphicx}
+
+\lstset{
+	tabsize=2
+}
+
+\title{hw8 - Traveling Salesperson}
+\author{Ian Macfarlane, A02243880}
+
+\begin{document}
+
+\maketitle
+
+You can run my code using:\\
+mpicc hw8.c -o hw8 -lm\\
+mpiexec -np 2 ./hw8\\
+My implementation should run for any number of processors.
+Though if you only give it 1 processor it won't start running the algorithm because there are no slaves.\\
+If you want to run my sequential version just replace hw8 in the above commands with sequential.\\
+I implemented my traveling salesperson algorithm using a parallel genetic algorithm.
+I initially implemented the genetic algorithm in sequence, which is in sequential.c
+This sequential version is actually a lot faster than my parallel implementation.
+I'm pretty sure that this is mostly because I am using c and all my array operations are super slow.
+For my parallel implementation, as processors increase my genetic algorithm increases its global population.
+So that each process no matter how many processes is always dealing with the same size sub population.\\
+
+\includegraphics[scale=.5]{graph}\\
+
+\lstinputlisting{hw8.c}
+
+\end{document}
